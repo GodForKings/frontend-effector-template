@@ -1,0 +1,1 @@
+export { categoriesModels } from './model/list'
