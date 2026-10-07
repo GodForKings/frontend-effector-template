@@ -2,18 +2,18 @@
 
 import { useUnit } from 'effector-react'
 import { Moon, Sun } from 'lucide-react'
-import type { FC } from 'react'
+import { type FC, use } from 'react'
+import { browser } from 'react-dom'
 
-import { useMounted } from '@/shared/hooks'
 import { Button } from '@/shared/ui/shadcn'
 
 import { themeModel } from '../model/theme'
 
 export const ThemeSwitcher: FC = () => {
+  use(browser())
   const [theme, themeToggled] = useUnit([themeModel.stores.$theme, themeModel.events.themeToggled])
-  const mounted = useMounted()
 
-  const isDark = mounted && theme === 'dark'
+  const isDark = theme === 'dark'
 
   return (
     <Button
